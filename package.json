@@ -20,8 +20,10 @@
   },
   "reactToolbox": {
     "include": [
+      "APP_BAR",
       "BUTTON",
-      "APP_BAR"
+      "INPUT",
+      "LIST"
     ],
     "customProperties": {
       "animation-duration": "0.3s"
