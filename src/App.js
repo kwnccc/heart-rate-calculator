@@ -10,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <AppBar title='Heart Rate Calculator'></AppBar>
+        <AppBar title='Karvonen Heart Rate Calculator'></AppBar>
         <CalculatorContainer />
       </div>
     );
