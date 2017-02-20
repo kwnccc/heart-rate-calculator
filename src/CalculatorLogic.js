@@ -7,7 +7,7 @@ const ZONE_PERCENTS = [
   {min: 0.94, max: 1}
 ];
 
-export default function CulculatorLogic(age, rhr) {
+export default function CulculatorLogic(age = 0, rhr = 0) {
   age = parseInt(age, 10);
   rhr = parseInt(rhr, 10);
   let maximumHeartRate = MAX_HEART_RATE - age;
