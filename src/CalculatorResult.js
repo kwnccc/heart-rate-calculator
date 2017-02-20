@@ -1,22 +1,26 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 
 import List from 'react-toolbox/lib/list/List';
 import ListItem from 'react-toolbox/lib/list/ListItem';
 import ListSubHeader from 'react-toolbox/lib/list/ListSubHeader';
 import ListDivider from 'react-toolbox/lib/list/ListDivider';
 
-const CalculatorResult = () => (
+const CalculatorResult = ({mhr, rrh, zones}) => (
   <List ripple={false}>
     <ListSubHeader caption="Results" />
-    <ListItem ripple={false} caption='Max Heart Rate' legend="195"/>
-    <ListItem ripple={false} caption='Heart Rate Reserve' legend="195"/>
+    <ListItem ripple={false} caption='Max Heart Rate' legend={`${mhr}`}/>
+    <ListItem ripple={false} caption='Heart Rate Reserve' legend={`${rrh}`}/>
     <ListDivider />
-    <ListItem ripple={false} caption='Zone 1' legend="195"/>
-    <ListItem ripple={false} caption='Zone 2' legend="195"/>
-    <ListItem ripple={false} caption='Zone 3' legend="195"/>
-    <ListItem ripple={false} caption='Zone 4' legend="195"/>
-    <ListItem ripple={false} caption='Zone 5' legend="195"/>
+    {zones.map((zone, i) => {
+        return <ListItem key={i} ripple={false} caption={`Zone ${i+1}`} legend={`From ${zone.min} to ${zone.max}`} />
+    })}
   </List>
 );
+
+CalculatorResult.propTypes = {
+  mhr: React.PropTypes.number.isRequired,
+  rrh: React.PropTypes.number.isRequired,
+  zones: React.PropTypes.array.isRequired
+};
 
 export default CalculatorResult;
