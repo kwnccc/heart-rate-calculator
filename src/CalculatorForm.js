@@ -9,13 +9,14 @@ class CalculatorForm extends React.Component {
     this.state = {
       age: {value: '', error: ''},
       rhr: {value: '', error: ''},
-      buttonDisabled: true
+      isButtonEnabled: false
     };
     this.validateInput = this.validateInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   validateInput(name, value) {
     let error;
+    value = parseInt(value, 10);
     switch (name) {
       case 'age':
         if(value > 0 && value <= 100) {
@@ -37,13 +38,17 @@ class CalculatorForm extends React.Component {
     return error;
   }
   handleChange(name, value) {
-    let validation = this.validateInput(name, value);
-    let buttonDisabled = !!validation;
-    this.setState({...this.state, [name]: {value, error: validation}, buttonDisabled});
+    const error = this.validateInput(name, value);
+
+    const otherInput = name === 'age' ? 'rhr' : 'age';
+    const isButtonEnabled = value.length && !error.length
+                          && this.state[otherInput].value.length
+                          && !this.state[otherInput].error.length
+
+    this.setState({...this.state, [name]: {value, error}, isButtonEnabled});
   }
   handleSubmit(e) {
-    e.preventDefault();
-    if(this.state.buttonDisabled) return;
+    if(!this.state.isButtonEnabled) return;
     this.props.onSubmit(this.state.age.value, this.state.rhr.value);
   }
   render() {
@@ -51,7 +56,7 @@ class CalculatorForm extends React.Component {
       <div>
         <Input type='number' label='Age' name='age' value={this.state.age.value} error={this.state.age.error} onChange={this.handleChange.bind(this, 'age')} maxLength={3} />
         <Input type='number' label='Resting Heart Rate' name='rhr' value={this.state.rhr.value} error={this.state.rhr.error} onChange={this.handleChange.bind(this, 'rhr')} maxLength={3} />
-        <Button raised primary disabled={this.state.buttonDisabled} onClick={this.handleSubmit}>Calculate</Button>
+        <Button raised primary disabled={!this.state.isButtonEnabled} onClick={this.handleSubmit}>Calculate</Button>
       </div>
     );
   }
