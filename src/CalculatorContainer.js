@@ -7,13 +7,58 @@ import CalculatorResult from './CalculatorResult';
 class CalculatorContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {calculated: false};
+    this.state = {
+      age: {value: '', error: ''},
+      rhr: {value: '', error: ''},
+      isButtonEnabled: false,
+      calculated: false
+    };
 
-    this.calculate = this.calculate.bind(this);
+    this._calculate = this._calculate.bind(this);
+    this._validateInput = this._validateInput.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
-  calculate(age, rhr) {
-    let {mhr, rrh, zones} = CalculatorLogic(age, rhr);
-    this.setState({...this.state, age, rhr, mhr, rrh, zones, calculated: true});
+  _calculate() {
+    let {mhr, rrh, zones} = CalculatorLogic(this.state.age.value, this.state.rhr.value);
+    this.setState({...this.state, mhr, rrh, zones, calculated: true});
+  }
+  _validateInput(name, value) {
+    let error;
+    value = parseInt(value, 10);
+    switch (name) {
+      case 'age':
+        if(value > 0 && value <= 100) {
+          error = '';
+        } else {
+          error = 'You should try a more reasonable age: 1 - 100';
+        }
+        break;
+      case 'rhr':
+        if(value > 0 && value < 220) {
+          error = '';
+        } else {
+          error = 'You should try a more reasonable Resting Heart Rate: 1 - 220';
+        }
+        break;
+      default:
+        error = '';
+    }
+    return error;
+  }
+  onChange(name, value) {
+    const error = this._validateInput(name, value);
+
+    const otherInput = name === 'age' ? 'rhr' : 'age';
+    const isButtonEnabled = !!(value.length && !error.length
+                          && this.state[otherInput].value.length
+                          && !this.state[otherInput].error.length);
+
+    this.setState({...this.state, [name]: {value, error}, isButtonEnabled});
+  }
+  onSubmit(e) {
+    if(!this.state.isButtonEnabled) return;
+    this._calculate();
   }
   render() {
     let result;
@@ -26,7 +71,7 @@ class CalculatorContainer extends React.Component {
     return (
       <section className="App-calculator">
         <section className="App-calculator-form">
-          <CalculatorForm onSubmit={this.calculate} />
+          <CalculatorForm {...this.state} onChange={this.onChange} onSubmit={this.onSubmit} />
         </section>
         {result}
       </section>
