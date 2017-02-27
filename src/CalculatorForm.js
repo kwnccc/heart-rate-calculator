@@ -3,26 +3,24 @@ import React from 'react';
 import Button from 'react-toolbox/lib/button/Button';
 import Input from 'react-toolbox/lib/input/Input';
 
-const CalculatorForm = ({age, rhr, isButtonEnabled, onChange, onSubmit}) => {
+const CalculatorForm = ({age, rhr, error, isButtonEnabled, onChange, onSubmit}) => {
   const onChangeAge = onChange.bind(this, 'age');
   const onChangeRhr = onChange.bind(this, 'rhr');
   return (
     <div>
-    <Input type='number' label='Age' name='age' value={age.value} error={age.error} onChange={onChangeAge} maxLength={3} />
-    <Input type='number' label='Resting Heart Rate' name='rhr' value={rhr.value} error={rhr.error} onChange={onChangeRhr} maxLength={3} />
+    <Input type='number' label='Age' name='age' value={age} error={error.age} onChange={onChangeAge} maxLength={3} />
+    <Input type='number' label='Resting Heart Rate' name='rhr' value={rhr} error={error.rhr} onChange={onChangeRhr} maxLength={3} />
     <Button raised primary disabled={!isButtonEnabled} onClick={onSubmit}>Calculate</Button>
     </div>
   );
 }
 
 CalculatorForm.propTypes = {
-  age: React.PropTypes.shape({
-    value: React.PropTypes.string,
-    error: React.PropTypes.string
-  }),
-  rhr: React.PropTypes.shape({
-    value: React.PropTypes.string,
-    error: React.PropTypes.string
+  age: React.PropTypes.string,
+  rhr: React.PropTypes.string,
+  error: React.PropTypes.shape({
+    age: React.PropTypes.string,
+    rhr: React.PropTypes.string
   }),
   isButtonEnabled: React.PropTypes.bool,
   onChange: React.PropTypes.func.isRequired,

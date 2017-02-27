@@ -8,8 +8,12 @@ class CalculatorContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      age: {value: '', error: ''},
-      rhr: {value: '', error: ''},
+      age: '',
+      rhr: '',
+      error: {
+        age: '',
+        rhr: '',
+      },
       isButtonEnabled: false,
       calculated: false
     };
@@ -24,25 +28,25 @@ class CalculatorContainer extends React.Component {
     this.setState({...this.state, mhr, rrh, zones, calculated: true});
   }
   _validateInput(name, value) {
-    let error;
+    let error = Object.assign({}, this.state.error);
     value = parseInt(value, 10);
     switch (name) {
       case 'age':
         if(value > 0 && value <= 100) {
-          error = '';
+          error.age = '';
         } else {
-          error = 'You should try a more reasonable age: 1 - 100';
+          error.age = 'You should try a more reasonable age: 1 - 100';
         }
         break;
       case 'rhr':
         if(value > 0 && value < 220) {
-          error = '';
+          error.rhr = '';
         } else {
-          error = 'You should try a more reasonable Resting Heart Rate: 1 - 220';
+          error.rhr = 'You should try a more reasonable Resting Heart Rate: 1 - 220';
         }
         break;
       default:
-        error = '';
+        error = {age:'', rhr: ''};
     }
     return error;
   }
@@ -50,28 +54,30 @@ class CalculatorContainer extends React.Component {
     const error = this._validateInput(name, value);
 
     const otherInput = name === 'age' ? 'rhr' : 'age';
-    const isButtonEnabled = !!(value.length && !error.length
-                          && this.state[otherInput].value.length
-                          && !this.state[otherInput].error.length);
+    const isButtonEnabled = value.length > 0 && error[name].length === 0
+                          && this.state[otherInput].length > 0
+                          && this.state.error[otherInput].length === 0;
 
-    this.setState({...this.state, [name]: {value, error}, isButtonEnabled});
+    this.setState({...this.state, [name]: value, error, isButtonEnabled});
   }
   onSubmit(e) {
     if(!this.state.isButtonEnabled) return;
     this._calculate();
   }
   render() {
+    const { age, rhr, error, mhr, rrh, zones, isButtonEnabled, calculated } = this.state;
     let result;
-    if(this.state.calculated) {
+    if(calculated) {
       result =
         <section className="App-calculator-result">
-          <CalculatorResult mhr={this.state.mhr} rrh={this.state.rrh} zones={this.state.zones} />
+          <CalculatorResult mhr={mhr} rrh={rrh} zones={zones} />
         </section>;
     }
     return (
       <section className="App-calculator">
         <section className="App-calculator-form">
-          <CalculatorForm {...this.state} onChange={this.onChange} onSubmit={this.onSubmit} />
+          <CalculatorForm age={age} rhr={rhr} error={error} isButtonEnabled={isButtonEnabled}
+            onChange={this.onChange} onSubmit={this.onSubmit} />
         </section>
         {result}
       </section>
