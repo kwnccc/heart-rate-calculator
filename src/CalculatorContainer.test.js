@@ -9,7 +9,7 @@ describe('on initilization', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(<CalculatorContainer />);
-  })
+  });
 
   it('should render a section with specific class', () => {
     expect(wrapper.is('section')).toBe(true);
@@ -38,5 +38,89 @@ describe('on initilization', () => {
     expect(form.prop('rhr')).toBe('');
     expect(form.prop('error')).toEqual({age: '', rhr: ''});
     expect(form.prop('isButtonEnabled')).toBe(false);
+  });
+});
+
+describe('CalculatorForm onChange', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<CalculatorContainer />);
+  });
+
+  it('should update state according to input', () => {
+    wrapper.find(CalculatorForm).prop('onChange')('age','26');
+    wrapper.find(CalculatorForm).prop('onChange')('rhr','59');
+
+    expect(wrapper.state('age')).toBe('26');
+    expect(wrapper.state('rhr')).toBe('59');
+    expect(wrapper.state('error')).toEqual({age:'', rhr:''});
+  });
+
+  it('should update CalculatorForm according to input', () => {
+    wrapper.find(CalculatorForm).prop('onChange')('age','26');
+    wrapper.find(CalculatorForm).prop('onChange')('rhr','59');
+
+    expect(wrapper.find(CalculatorForm).prop('age')).toBe('26');
+    expect(wrapper.find(CalculatorForm).prop('rhr')).toBe('59');
+  });
+
+  it('should update component\'s error', () => {
+    wrapper.find(CalculatorForm).prop('onChange')('age','260');
+    wrapper.find(CalculatorForm).prop('onChange')('rhr','59');
+
+    expect(wrapper.state('error').age.length).toBeGreaterThan(0);
+    expect(wrapper.state('error').rhr.length).toBe(0);
+
+    wrapper.find(CalculatorForm).prop('onChange')('age','26');
+    wrapper.find(CalculatorForm).prop('onChange')('rhr','590');
+
+    expect(wrapper.state('error').age.length).toBe(0);
+    expect(wrapper.state('error').rhr.length).toBeGreaterThan(0);
+  });
+
+  it('should update component\'s isButtonEnabled to true', () => {
+    // valid input values
+    wrapper.find(CalculatorForm).prop('onChange')('age','26');
+    wrapper.find(CalculatorForm).prop('onChange')('rhr','59');
+    expect(wrapper.state('isButtonEnabled')).toBe(true);
+  });
+
+  it('should update component\'s isButtonEnabled to false', () => {
+    // empty input values
+    wrapper.find(CalculatorForm).prop('onChange')('age','');
+    wrapper.find(CalculatorForm).prop('onChange')('rhr','59');
+    expect(wrapper.state('isButtonEnabled')).toBe(false);
+
+    wrapper.find(CalculatorForm).prop('onChange')('age','26');
+    wrapper.find(CalculatorForm).prop('onChange')('rhr','');
+    expect(wrapper.state('isButtonEnabled')).toBe(false);
+
+    // invalid input values
+    wrapper.find(CalculatorForm).prop('onChange')('age','260');
+    wrapper.find(CalculatorForm).prop('onChange')('rhr','59');
+    expect(wrapper.state('isButtonEnabled')).toBe(false);
+
+    wrapper.find(CalculatorForm).prop('onChange')('age','26');
+    wrapper.find(CalculatorForm).prop('onChange')('rhr','590');
+    expect(wrapper.state('isButtonEnabled')).toBe(false);
+  });
+});
+
+describe('CalculatorForm onSubmit', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<CalculatorContainer />);
+  });
+
+  it('shouldn\'t trigger calculate when isButtonEnabled is false', () => {
+    wrapper.setState({...wrapper.state(), isButtonEnabled: false});
+    wrapper.find(CalculatorForm).prop('onSubmit')();
+    expect(wrapper.state('calculated')).toBe(false);
+  });
+
+  it('should trigger calculate when isButtonEnabled is true', () => {
+    wrapper.setState({...wrapper.state(), age:'26', rhr: '59', isButtonEnabled: true});
+    wrapper.find(CalculatorForm).prop('onSubmit')();
+    expect(wrapper.state('calculated')).toBe(true);
   });
 });
