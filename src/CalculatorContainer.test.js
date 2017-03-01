@@ -124,3 +124,30 @@ describe('CalculatorForm onSubmit', () => {
     expect(wrapper.state('calculated')).toBe(true);
   });
 });
+
+describe('calculation', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<CalculatorContainer />);
+    wrapper.setState({...wrapper.state(), age:'26', rhr: '59', isButtonEnabled: true});
+    wrapper.find(CalculatorForm).prop('onSubmit')();
+  });
+
+  it('should update component\'s state', () => {
+    expect(wrapper.state('mhr')).toBe(194);
+    expect(wrapper.state('rrh')).toBe(135);
+    expect(wrapper.state('zones').length).toBe(5);
+    expect(wrapper.state('calculated')).toBe(true);
+  });
+
+  it('should trigger CalculatorResult display', () => {
+    expect(wrapper.find(CalculatorResult).length).toBe(1);
+  });
+
+  it('should update CalculatorResult props', () => {
+    const resultComp = wrapper.find(CalculatorResult);
+    expect(resultComp.prop('mhr')).toBe(194);
+    expect(resultComp.prop('rrh')).toBe(135);
+    expect(resultComp.prop('zones').length).toBe(5);
+  });
+});
