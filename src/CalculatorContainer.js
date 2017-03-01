@@ -24,7 +24,7 @@ class CalculatorContainer extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
   _calculate() {
-    let {mhr, rrh, zones} = CalculatorLogic(this.state.age.value, this.state.rhr.value);
+    let {mhr, rrh, zones} = CalculatorLogic(this.state.age, this.state.rhr);
     this.setState({...this.state, mhr, rrh, zones, calculated: true});
   }
   _validateInput(name, value) {
