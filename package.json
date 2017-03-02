@@ -4,6 +4,7 @@
   "private": true,
   "devDependencies": {
     "enzyme": "^2.7.1",
+    "flow-bin": "^0.40.0",
     "react-addons-test-utils": "^15.4.2",
     "react-scripts": "0.9.0",
     "react-toolbox": "2.0.0-beta.6",
@@ -16,9 +17,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "toolbox": "react-toolbox-themr",
+    "eject": "react-scripts eject",
+    "flow": "flow",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "toolbox": "react-toolbox-themr"
   },
   "reactToolbox": {
     "include": [
