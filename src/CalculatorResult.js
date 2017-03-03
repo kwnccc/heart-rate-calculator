@@ -1,3 +1,15 @@
+//@flow
+type ZoneType = {
+  min: number,
+  max: number
+};
+
+type CalculatorResultType = {
+  mhr: number,
+  rrh: number,
+  zones: Array<ZoneType>
+};
+
 import React from 'react';
 
 import List from 'react-toolbox/lib/list/List';
@@ -5,7 +17,7 @@ import ListItem from 'react-toolbox/lib/list/ListItem';
 import ListSubHeader from 'react-toolbox/lib/list/ListSubHeader';
 import ListDivider from 'react-toolbox/lib/list/ListDivider';
 
-const CalculatorResult = ({mhr, rrh, zones}) => (
+const CalculatorResult = ({ mhr, rrh, zones} : CalculatorResultType) => (
   <List ripple={false}>
     <ListSubHeader caption="Results" />
     <ListItem ripple={false} caption='Max Heart Rate' legend={`${mhr}`}/>
