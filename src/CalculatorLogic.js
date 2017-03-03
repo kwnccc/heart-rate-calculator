@@ -1,3 +1,15 @@
+//@flow
+type ZoneType = {
+  min: number,
+  max: number
+};
+
+type CalculatorResultType = {
+  mhr: number,
+  rrh: number,
+  zones: Array<ZoneType>
+};
+
 const MAX_HEART_RATE = 220;
 const ZONE_PERCENTS = [
   {min: 0.5, max: 0.6},
@@ -7,9 +19,7 @@ const ZONE_PERCENTS = [
   {min: 0.94, max: 1}
 ];
 
-export default function CulculatorLogic(age = 0, rhr = 0) {
-  age = parseInt(age, 10);
-  rhr = parseInt(rhr, 10);
+export default function CulculatorLogic(age: number = 0, rhr: number = 0): CalculatorResultType {
   let maximumHeartRate = MAX_HEART_RATE - age;
   let reservedHeartRate = maximumHeartRate - rhr;
   let zonesHeartRate = ZONE_PERCENTS.map(percent => {
