@@ -1,3 +1,5 @@
+//@flow
+
 import React, { Component } from 'react';
 
 import AppBar from 'react-toolbox/lib/app_bar/AppBar';

@@ -5,8 +5,8 @@ type ZoneType = {
 };
 
 type CalculatorResultType = {
-  mhr: number,
-  rrh: number,
+  mhr: string,
+  rrh: string,
   zones: Array<ZoneType>
 };
 
@@ -30,8 +30,8 @@ const CalculatorResult = ({ mhr, rrh, zones} : CalculatorResultType) => (
 );
 
 CalculatorResult.propTypes = {
-  mhr: React.PropTypes.number.isRequired,
-  rrh: React.PropTypes.number.isRequired,
+  mhr: React.PropTypes.string.isRequired,
+  rrh: React.PropTypes.string.isRequired,
   zones: React.PropTypes.array.isRequired
 };
 
