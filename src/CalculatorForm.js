@@ -5,7 +5,7 @@ type CalculatorFormType = {
   rhr: string,
   error: Object,
   isButtonEnabled: boolean,
-  onChange: () => void,
+  onChange: (name: string, value: string) => void,
   onSubmit: () => void
 };
 

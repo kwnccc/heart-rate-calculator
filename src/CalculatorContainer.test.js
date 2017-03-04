@@ -134,8 +134,8 @@ describe('calculation', () => {
   });
 
   it('should update component\'s state', () => {
-    expect(wrapper.state('mhr')).toBe(194);
-    expect(wrapper.state('rrh')).toBe(135);
+    expect(wrapper.state('mhr')).toBe('194');
+    expect(wrapper.state('rrh')).toBe('135');
     expect(wrapper.state('zones').length).toBe(5);
     expect(wrapper.state('calculated')).toBe(true);
   });
@@ -146,8 +146,8 @@ describe('calculation', () => {
 
   it('should update CalculatorResult props', () => {
     const resultComp = wrapper.find(CalculatorResult);
-    expect(resultComp.prop('mhr')).toBe(194);
-    expect(resultComp.prop('rrh')).toBe(135);
+    expect(resultComp.prop('mhr')).toBe('194');
+    expect(resultComp.prop('rrh')).toBe('135');
     expect(resultComp.prop('zones').length).toBe(5);
   });
 });
