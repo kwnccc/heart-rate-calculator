@@ -13,8 +13,8 @@ class CalculatorContainer extends React.Component {
   state: {
     age: string,
     rhr: string,
-    mhr: string,
-    rrh: string,
+    mhr: number,
+    rrh: number,
     zones: Array<ZoneType>,
     error: InputErrorType,
     isButtonEnabled: boolean,
@@ -26,8 +26,8 @@ class CalculatorContainer extends React.Component {
     this.state = {
       age: '',
       rhr: '',
-      mhr: '',
-      rrh: '',
+      mhr: 0,
+      rrh: 0,
       zones: [],
       error: {
         age: '',
@@ -46,7 +46,7 @@ class CalculatorContainer extends React.Component {
     let age = parseInt(this.state.age, 10);
     let rhr = parseInt(this.state.rhr, 10);
     let {mhr, rrh, zones} = CalculatorLogic(age, rhr);
-    this.setState({...this.state, mhr: mhr.toString(), rrh: rrh.toString(), zones, calculated: true});
+    this.setState({...this.state, mhr: mhr, rrh: rrh, zones, calculated: true});
   }
   _validateInput = (name: string, value: string): InputErrorType => {
     let error = Object.assign({}, this.state.error);
