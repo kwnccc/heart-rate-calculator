@@ -9,8 +9,8 @@ import ListDivider from 'react-toolbox/lib/list/ListDivider';
 
 it('should render correct component', () => {
   const mockedProps = {
-    mhr: '195',
-    rrh: '135',
+    mhr: 195,
+    rrh: 135,
     zones: [
       {min:90, max:110},
       {min:111, max:123},
