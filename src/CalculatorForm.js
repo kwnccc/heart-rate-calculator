@@ -19,16 +19,4 @@ const CalculatorForm = ({age='', rhr='', error={age:'', rhr:''}, isButtonEnabled
   );
 };
 
-CalculatorForm.propTypes = {
-  age: React.PropTypes.string,
-  rhr: React.PropTypes.string,
-  error: React.PropTypes.shape({
-    age: React.PropTypes.string,
-    rhr: React.PropTypes.string
-  }),
-  isButtonEnabled: React.PropTypes.bool,
-  onChange: React.PropTypes.func.isRequired,
-  onSubmit: React.PropTypes.func.isRequired
-}
-
 export default CalculatorForm;

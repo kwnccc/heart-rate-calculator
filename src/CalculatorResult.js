@@ -21,10 +21,4 @@ const CalculatorResult = ({ mhr, rrh, zones} : CalculatorResultType) => (
   </List>
 );
 
-CalculatorResult.propTypes = {
-  mhr: React.PropTypes.number.isRequired,
-  rrh: React.PropTypes.number.isRequired,
-  zones: React.PropTypes.array.isRequired
-};
-
 export default CalculatorResult;
