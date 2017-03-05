@@ -1,14 +1,6 @@
 //@flow
-type ZoneType = {
-  min: number,
-  max: number
-};
 
-type CalculatorResultType = {
-  mhr: number,
-  rrh: number,
-  zones: Array<ZoneType>
-};
+import type { CalculatorResultType } from './CalculatorTypes'
 
 const MAX_HEART_RATE = 220;
 const ZONE_PERCENTS = [

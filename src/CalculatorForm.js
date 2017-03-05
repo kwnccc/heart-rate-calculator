@@ -1,20 +1,13 @@
 //@flow
 
-type CalculatorFormType = {
-  age: string,
-  rhr: string,
-  error: Object,
-  isButtonEnabled: boolean,
-  onChange: (name: string, value: string) => void,
-  onSubmit: () => void
-};
-
 import React from 'react';
 
 import Button from 'react-toolbox/lib/button/Button';
 import Input from 'react-toolbox/lib/input/Input';
 
-const CalculatorForm = ({age='', rhr='', error={}, isButtonEnabled=false, onChange, onSubmit}: CalculatorFormType) => {
+import type { CalculatorFormType } from './CalculatorTypes';
+
+const CalculatorForm = ({age='', rhr='', error={age:'', rhr:''}, isButtonEnabled=false, onChange, onSubmit}: CalculatorFormType) => {
   const onChangeAge = onChange.bind(this, 'age');
   const onChangeRhr = onChange.bind(this, 'rhr');
   return (

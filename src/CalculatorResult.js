@@ -1,14 +1,4 @@
 //@flow
-type ZoneType = {
-  min: number,
-  max: number
-};
-
-type CalculatorResultType = {
-  mhr: string,
-  rrh: string,
-  zones: Array<ZoneType>
-};
 
 import React from 'react';
 
@@ -16,6 +6,8 @@ import List from 'react-toolbox/lib/list/List';
 import ListItem from 'react-toolbox/lib/list/ListItem';
 import ListSubHeader from 'react-toolbox/lib/list/ListSubHeader';
 import ListDivider from 'react-toolbox/lib/list/ListDivider';
+
+import type { CalculatorResultType } from './CalculatorTypes';
 
 const CalculatorResult = ({ mhr, rrh, zones} : CalculatorResultType) => (
   <List ripple={false}>
