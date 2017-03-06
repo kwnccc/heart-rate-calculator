@@ -1,15 +1,34 @@
+//@flow
+
 import React from 'react';
 
 import CalculatorLogic from './CalculatorLogic';
 import CalculatorForm from './CalculatorForm';
 import CalculatorResult from './CalculatorResult';
 
+import type { ZoneType, InputErrorType } from './CalculatorTypes';
+
 class CalculatorContainer extends React.Component {
-  constructor(props) {
+
+  state: {
+    age: string,
+    rhr: string,
+    mhr: number,
+    rrh: number,
+    zones: Array<ZoneType>,
+    error: InputErrorType,
+    isButtonEnabled: boolean,
+    calculated: boolean
+  };
+
+  constructor(props: Object) {
     super(props);
     this.state = {
       age: '',
       rhr: '',
+      mhr: 0,
+      rrh: 0,
+      zones: [],
       error: {
         age: '',
         rhr: '',
@@ -23,23 +42,25 @@ class CalculatorContainer extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-  _calculate() {
-    let {mhr, rrh, zones} = CalculatorLogic(this.state.age, this.state.rhr);
-    this.setState({...this.state, mhr, rrh, zones, calculated: true});
+  _calculate = () => {
+    let age = parseInt(this.state.age, 10);
+    let rhr = parseInt(this.state.rhr, 10);
+    let {mhr, rrh, zones} = CalculatorLogic(age, rhr);
+    this.setState({...this.state, mhr: mhr, rrh: rrh, zones, calculated: true});
   }
-  _validateInput(name, value) {
+  _validateInput = (name: string, value: string): InputErrorType => {
     let error = Object.assign({}, this.state.error);
-    value = parseInt(value, 10);
+    let intValue = parseInt(value, 10);
     switch (name) {
       case 'age':
-        if(value > 0 && value <= 100) {
+        if(intValue > 0 && intValue <= 100) {
           error.age = '';
         } else {
           error.age = 'You should try a more reasonable age: 1 - 100';
         }
         break;
       case 'rhr':
-        if(value > 0 && value < 220) {
+        if(intValue > 0 && intValue < 220) {
           error.rhr = '';
         } else {
           error.rhr = 'You should try a more reasonable Resting Heart Rate: 1 - 220';
@@ -50,7 +71,7 @@ class CalculatorContainer extends React.Component {
     }
     return error;
   }
-  onChange(name, value) {
+  onChange = (name: string, value: string) => {
     const error = this._validateInput(name, value);
 
     const otherInput = name === 'age' ? 'rhr' : 'age';
@@ -60,7 +81,7 @@ class CalculatorContainer extends React.Component {
 
     this.setState({...this.state, [name]: value, error, isButtonEnabled});
   }
-  onSubmit(e) {
+  onSubmit = () => {
     if(!this.state.isButtonEnabled) return;
     this._calculate();
   }

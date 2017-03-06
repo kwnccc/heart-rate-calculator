@@ -1,3 +1,5 @@
+//@flow
+
 import React from 'react';
 
 import List from 'react-toolbox/lib/list/List';
@@ -5,7 +7,9 @@ import ListItem from 'react-toolbox/lib/list/ListItem';
 import ListSubHeader from 'react-toolbox/lib/list/ListSubHeader';
 import ListDivider from 'react-toolbox/lib/list/ListDivider';
 
-const CalculatorResult = ({mhr, rrh, zones}) => (
+import type { CalculatorResultType } from './CalculatorTypes';
+
+const CalculatorResult = ({ mhr, rrh, zones} : CalculatorResultType) => (
   <List ripple={false}>
     <ListSubHeader caption="Results" />
     <ListItem ripple={false} caption='Max Heart Rate' legend={`${mhr}`}/>
@@ -16,11 +20,5 @@ const CalculatorResult = ({mhr, rrh, zones}) => (
     })}
   </List>
 );
-
-CalculatorResult.propTypes = {
-  mhr: React.PropTypes.number.isRequired,
-  rrh: React.PropTypes.number.isRequired,
-  zones: React.PropTypes.array.isRequired
-};
 
 export default CalculatorResult;
