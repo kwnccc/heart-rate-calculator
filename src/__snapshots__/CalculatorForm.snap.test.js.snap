@@ -1,0 +1,225 @@
+exports[`test CalculatorForm defaults to specific values 1`] = `
+<div>
+  <div
+    className=""
+    data-react-toolbox="input">
+    <input
+      className=""
+      disabled={false}
+      maxLength={3}
+      name="age"
+      onChange={[Function]}
+      onKeyPress={undefined}
+      required={false}
+      role="input"
+      type="number"
+      value="" />
+    <span
+      className={undefined} />
+    <label
+      className=""
+      htmlFor="age">
+      Age
+    </label>
+    <span
+      className={undefined}>
+      0
+      /
+      3
+    </span>
+  </div>
+  <div
+    className=""
+    data-react-toolbox="input">
+    <input
+      className=""
+      disabled={false}
+      maxLength={3}
+      name="rhr"
+      onChange={[Function]}
+      onKeyPress={undefined}
+      required={false}
+      role="input"
+      type="number"
+      value="" />
+    <span
+      className={undefined} />
+    <label
+      className=""
+      htmlFor="rhr">
+      Resting Heart Rate
+    </label>
+    <span
+      className={undefined}>
+      0
+      /
+      3
+    </span>
+  </div>
+  <button
+    className=""
+    data-react-toolbox="button"
+    disabled={true}
+    href={undefined}
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchStart={[Function]}
+    type="button">
+    Calculate
+  </button>
+</div>
+`;
+
+exports[`test CalculatorForm props values 1`] = `
+<div>
+  <div
+    className=""
+    data-react-toolbox="input">
+    <input
+      className="undefined"
+      disabled={false}
+      maxLength={3}
+      name="age"
+      onChange={[Function]}
+      onKeyPress={undefined}
+      required={false}
+      role="input"
+      type="number"
+      value="26" />
+    <span
+      className={undefined} />
+    <label
+      className=""
+      htmlFor="age">
+      Age
+    </label>
+    <span
+      className={undefined}>
+      2
+      /
+      3
+    </span>
+  </div>
+  <div
+    className=""
+    data-react-toolbox="input">
+    <input
+      className="undefined"
+      disabled={false}
+      maxLength={3}
+      name="rhr"
+      onChange={[Function]}
+      onKeyPress={undefined}
+      required={false}
+      role="input"
+      type="number"
+      value="58" />
+    <span
+      className={undefined} />
+    <label
+      className=""
+      htmlFor="rhr">
+      Resting Heart Rate
+    </label>
+    <span
+      className={undefined}>
+      2
+      /
+      3
+    </span>
+  </div>
+  <button
+    className=""
+    data-react-toolbox="button"
+    disabled={false}
+    href={undefined}
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchStart={[Function]}
+    type="button">
+    Calculate
+  </button>
+</div>
+`;
+
+exports[`test CalculatorForm props values error 1`] = `
+<div>
+  <div
+    className=""
+    data-react-toolbox="input">
+    <input
+      className="undefined"
+      disabled={false}
+      maxLength={3}
+      name="age"
+      onChange={[Function]}
+      onKeyPress={undefined}
+      required={false}
+      role="input"
+      type="number"
+      value="126" />
+    <span
+      className={undefined} />
+    <label
+      className=""
+      htmlFor="age">
+      Age
+    </label>
+    <span
+      className={undefined}>
+      error age
+    </span>
+    <span
+      className={undefined}>
+      3
+      /
+      3
+    </span>
+  </div>
+  <div
+    className=""
+    data-react-toolbox="input">
+    <input
+      className="undefined"
+      disabled={false}
+      maxLength={3}
+      name="rhr"
+      onChange={[Function]}
+      onKeyPress={undefined}
+      required={false}
+      role="input"
+      type="number"
+      value="58" />
+    <span
+      className={undefined} />
+    <label
+      className=""
+      htmlFor="rhr">
+      Resting Heart Rate
+    </label>
+    <span
+      className={undefined}>
+      2
+      /
+      3
+    </span>
+  </div>
+  <button
+    className=""
+    data-react-toolbox="button"
+    disabled={true}
+    href={undefined}
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchStart={[Function]}
+    type="button">
+    Calculate
+  </button>
+</div>
+`;
