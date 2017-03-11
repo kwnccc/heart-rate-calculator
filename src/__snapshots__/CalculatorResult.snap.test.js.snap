@@ -1,0 +1,157 @@
+exports[`test CalculatorResult renders with default values 1`] = `
+<ul
+  className=""
+  data-react-toolbox="list">
+  <h5
+    className="">
+    Results
+  </h5>
+  <li
+    className="undefined "
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onTouchStart={[Function]}>
+    <span
+      className="">
+      <span
+        className="">
+        <span
+          className="undefined"
+          data-react-toolbox="list-item-text">
+          Max Heart Rate
+        </span>
+        <span
+          className=""
+          data-react-toolbox="list-item-text">
+          0
+        </span>
+      </span>
+    </span>
+  </li>
+  <li
+    className="undefined "
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onTouchStart={[Function]}>
+    <span
+      className="">
+      <span
+        className="">
+        <span
+          className="undefined"
+          data-react-toolbox="list-item-text">
+          Heart Rate Reserve
+        </span>
+        <span
+          className=""
+          data-react-toolbox="list-item-text">
+          0
+        </span>
+      </span>
+    </span>
+  </li>
+  <hr
+    className={undefined} />
+</ul>
+`;
+
+exports[`test CalculatorResult renders with prop values 1`] = `
+<ul
+  className=""
+  data-react-toolbox="list">
+  <h5
+    className="">
+    Results
+  </h5>
+  <li
+    className="undefined "
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onTouchStart={[Function]}>
+    <span
+      className="">
+      <span
+        className="">
+        <span
+          className="undefined"
+          data-react-toolbox="list-item-text">
+          Max Heart Rate
+        </span>
+        <span
+          className=""
+          data-react-toolbox="list-item-text">
+          195
+        </span>
+      </span>
+    </span>
+  </li>
+  <li
+    className="undefined "
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onTouchStart={[Function]}>
+    <span
+      className="">
+      <span
+        className="">
+        <span
+          className="undefined"
+          data-react-toolbox="list-item-text">
+          Heart Rate Reserve
+        </span>
+        <span
+          className=""
+          data-react-toolbox="list-item-text">
+          137
+        </span>
+      </span>
+    </span>
+  </li>
+  <hr
+    className={undefined} />
+  <li
+    className="undefined "
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onTouchStart={[Function]}>
+    <span
+      className="">
+      <span
+        className="">
+        <span
+          className="undefined"
+          data-react-toolbox="list-item-text">
+          Zone 1
+        </span>
+        <span
+          className=""
+          data-react-toolbox="list-item-text">
+          From 105 to 122
+        </span>
+      </span>
+    </span>
+  </li>
+  <li
+    className="undefined "
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onTouchStart={[Function]}>
+    <span
+      className="">
+      <span
+        className="">
+        <span
+          className="undefined"
+          data-react-toolbox="list-item-text">
+          Zone 2
+        </span>
+        <span
+          className=""
+          data-react-toolbox="list-item-text">
+          From 123 to 134
+        </span>
+      </span>
+    </span>
+  </li>
+</ul>
+`;
