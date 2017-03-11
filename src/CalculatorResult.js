@@ -9,7 +9,7 @@ import ListDivider from 'react-toolbox/lib/list/ListDivider';
 
 import type { CalculatorResultType } from './CalculatorTypes';
 
-const CalculatorResult = ({ mhr, rrh, zones} : CalculatorResultType) => (
+const CalculatorResult = ({mhr=0, rrh=0, zones=[]} : CalculatorResultType) => (
   <List ripple={false}>
     <ListSubHeader caption="Results" />
     <ListItem ripple={false} caption='Max Heart Rate' legend={`${mhr}`}/>
