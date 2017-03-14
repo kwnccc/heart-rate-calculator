@@ -1,0 +1,79 @@
+exports[`test CalculatorContainer renders with default values 1`] = `
+<section
+  className="App-calculator">
+  <section
+    className="App-calculator-form">
+    <div>
+      <div
+        className=""
+        data-react-toolbox="input">
+        <input
+          className=""
+          disabled={false}
+          maxLength={3}
+          name="age"
+          onChange={[Function]}
+          onKeyPress={undefined}
+          required={false}
+          role="input"
+          type="number"
+          value="" />
+        <span
+          className={undefined} />
+        <label
+          className=""
+          htmlFor="age">
+          Age
+        </label>
+        <span
+          className={undefined}>
+          0
+          /
+          3
+        </span>
+      </div>
+      <div
+        className=""
+        data-react-toolbox="input">
+        <input
+          className=""
+          disabled={false}
+          maxLength={3}
+          name="rhr"
+          onChange={[Function]}
+          onKeyPress={undefined}
+          required={false}
+          role="input"
+          type="number"
+          value="" />
+        <span
+          className={undefined} />
+        <label
+          className=""
+          htmlFor="rhr">
+          Resting Heart Rate
+        </label>
+        <span
+          className={undefined}>
+          0
+          /
+          3
+        </span>
+      </div>
+      <button
+        className=""
+        data-react-toolbox="button"
+        disabled={true}
+        href={undefined}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchStart={[Function]}
+        type="button">
+        Calculate
+      </button>
+    </div>
+  </section>
+</section>
+`;
