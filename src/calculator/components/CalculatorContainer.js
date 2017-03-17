@@ -2,11 +2,11 @@
 
 import React from 'react';
 
-import CalculatorLogic from './CalculatorLogic';
+import CalculatorLogic from './../CalculatorLogic';
 import CalculatorForm from './CalculatorForm';
 import CalculatorResult from './CalculatorResult';
 
-import type { ZoneType, InputErrorType } from './CalculatorTypes';
+import type { ZoneType, InputErrorType } from './../CalculatorTypes';
 
 class CalculatorContainer extends React.Component {
 

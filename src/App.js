@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 
 import AppBar from 'react-toolbox/lib/app_bar/AppBar';
 
-import CalculatorContainer from './CalculatorContainer.js';
+import CalculatorContainer from './calculator/components/CalculatorContainer.js';
 
 import './App.css';
 

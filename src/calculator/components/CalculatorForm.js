@@ -5,7 +5,7 @@ import React from 'react';
 import Button from 'react-toolbox/lib/button/Button';
 import Input from 'react-toolbox/lib/input/Input';
 
-import type { CalculatorFormType } from './CalculatorTypes';
+import type { CalculatorFormType } from './../CalculatorTypes';
 
 const CalculatorForm = ({age='', rhr='', error={age:'', rhr:''}, isButtonEnabled=false, onChange, onSubmit}: CalculatorFormType) => {
   const onChangeAge = onChange.bind(this, 'age');

@@ -7,7 +7,7 @@ import ListItem from 'react-toolbox/lib/list/ListItem';
 import ListSubHeader from 'react-toolbox/lib/list/ListSubHeader';
 import ListDivider from 'react-toolbox/lib/list/ListDivider';
 
-import type { CalculatorResultType } from './CalculatorTypes';
+import type { CalculatorResultType } from './../CalculatorTypes';
 
 const CalculatorResult = ({mhr=0, rrh=0, zones=[]} : CalculatorResultType) => (
   <List ripple={false}>
